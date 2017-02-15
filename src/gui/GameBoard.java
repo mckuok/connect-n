@@ -1,6 +1,7 @@
 package gui;
 
-import logic.VictoryChecker;
+import logic.checker.CellStatus;
+import logic.checker.VictoryChecker;
 import logic.player.PlayerMovedListener;
 
 import javax.swing.JLabel;
@@ -54,23 +55,27 @@ public class GameBoard extends JPanel {
 
   public void displayVictoryMessage() {
     JOptionPane.showMessageDialog(this, "You won.", "Congratulation", JOptionPane.INFORMATION_MESSAGE);
-
   }
 
-  public int[][] getPiecesDistribution(Color playerColor) {
-    int[][] piecesDistribution = new int[cells.length][cells[0].length];
+  public void displayDrawMessage() {
+    JOptionPane.showMessageDialog(this, "Game is draw.", "Boooo", JOptionPane.INFORMATION_MESSAGE);
+  }
+
+
+  public CellStatus[][] getPiecesDistribution(Color playerColor) {
+    CellStatus[][] piecesDistribution = new CellStatus[cells.length][cells[0].length];
     for (int i = cells.length -1; i >=0 ; i--) {
       for (int j = 0; j < cells[0].length ; j++) {
        Cell cell = cells[i][j];
        if (cell.getComponents().length == 0) {
-         piecesDistribution[i][j] = VictoryChecker.NON_PLAYER;
+         piecesDistribution[i][j] = CellStatus.EMPTY;
        } else {
          if (cell.getComponents()[0] instanceof Piece) {
            Piece piece = (Piece) cell.getComponents()[0];
            if (piece.getColor().equals(playerColor)) {
-             piecesDistribution[i][j] = VictoryChecker.PLAYER;
+             piecesDistribution[i][j] = CellStatus.PLAYER;
            } else {
-             piecesDistribution[i][j] = VictoryChecker.NON_PLAYER;
+             piecesDistribution[i][j] = CellStatus.OPPONENT;
            }
          }
        }

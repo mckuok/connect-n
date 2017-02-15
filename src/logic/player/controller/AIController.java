@@ -9,7 +9,7 @@ import java.awt.Point;
 /**
  * Created by MC on 2/12/2017.
  */
-public class AIController extends GameBoardController {
+public class AIController extends GameController {
 
   public AIController(Color playerColor, GameBoard gameBoard) {
     super(playerColor, gameBoard);

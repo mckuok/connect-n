@@ -13,7 +13,7 @@ import java.awt.event.MouseListener;
 /**
  * Created by MC on 2/12/2017.
  */
-public class GameBoardMouseListener extends GameBoardController implements MouseListener{
+public class GameBoardMouseListener extends GameController implements MouseListener{
 
   private MouseListener mouseListener;
 

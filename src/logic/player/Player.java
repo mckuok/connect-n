@@ -1,6 +1,6 @@
 package logic.player;
 
-import logic.player.controller.GameBoardController;
+import logic.player.controller.GameController;
 
 import java.awt.Color;
 
@@ -10,9 +10,9 @@ import java.awt.Color;
 public class Player {
 
   private final Color color;
-  private final GameBoardController controller;
+  private final GameController controller;
 
-  public Player(Color color, GameBoardController controller) {
+  public Player(Color color, GameController controller) {
     this.color = color;
     this.controller = controller;
   }

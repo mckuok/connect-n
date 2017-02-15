@@ -1,6 +1,7 @@
 package logic;
 
 import gui.GameBoard;
+import logic.checker.VictoryChecker;
 import logic.player.Player;
 import logic.player.PlayerMovedListener;
 
@@ -41,7 +42,10 @@ public class GameManager {
     @Override
     public void moved(Point point) {
       currentPlayer.releaseControl();
-      if (victoryChecker.playerWon(gameBoard.getPiecesDistribution(currentPlayer.getColor()))) {
+      if (victoryChecker.draw(gameBoard.getPiecesDistribution(currentPlayer.getColor()))) {
+        gameBoard.displayDrawMessage();
+      }
+      else if (victoryChecker.playerWon(gameBoard.getPiecesDistribution(currentPlayer.getColor()), point)) {
         System.out.println(players.current().getColor() + " won!");
         gameBoard.displayVictoryMessage();
       } else {
@@ -49,7 +53,5 @@ public class GameManager {
       }
     }
   }
-
-
 
 }

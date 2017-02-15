@@ -12,14 +12,14 @@ import java.util.List;
 /**
  * Created by MC on 2/12/2017.
  */
-public abstract class GameBoardController {
+public abstract class GameController {
 
   private final GameBoard gameBoard;
   private final Color playerColor;
 
   private final List<PlayerMovedListener> movedListeners = new LinkedList<>();
 
-  public GameBoardController(Color playerColor, GameBoard gameBoard) {
+  public GameController(Color playerColor, GameBoard gameBoard) {
     this.gameBoard = gameBoard;
     this.playerColor = playerColor;
   }
